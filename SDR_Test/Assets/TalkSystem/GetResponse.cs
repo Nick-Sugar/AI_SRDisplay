@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.Http;
-using System.Speech.Synthesis;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -20,7 +19,6 @@ public class GetResponse : MonoBehaviour
     {
         StartCoroutine(GetStart());
         p = new Process();
-        _Main();
     }
 
     // Update is called once per frame
@@ -60,18 +58,5 @@ public class GetResponse : MonoBehaviour
         UnityEngine.Debug.Log(Application.dataPath);
         p.StartInfo.Arguments = "/k " + Application.dataPath+ "/StreamingAssets/BouyomiChan_0_1_11_0_Beta20/RemoteTalk/RemoteTalk.exe /Talk "+text;
         p.Start();
-    }
-    void _Main()
-    {
-        SpeechSynthesizer synthesizer = new SpeechSynthesizer();
-        synthesizer.Volume = 100;  // 0...100
-        synthesizer.Rate = -2;     // -10...10
-
-        // Synchronous
-        synthesizer.Speak("Hello World");
-
-        // Asynchronous
-        synthesizer.SpeakAsync("Hello World");
-
     }
 }
